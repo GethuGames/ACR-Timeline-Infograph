@@ -1,65 +1,152 @@
+<!DOCTYPE HTML>
 <html>
        
     <head>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="jquery.imagemapster.min.js"></script>
+
+        <style>
+
+            #zoomInButton {
+                width: 48px;
+                height: 48;
+                position: fixed;
+                left: 10px;
+                top:10px;
+                background-image: url(zoomIn.png);
+            }
+
+            #zoomOutButton {
+                width: 48px;
+                height: 48;
+                position: fixed;
+                left: 10px;
+                top:50px;
+                background-image: url(zoomOut.png);
+            }
+
+        </style>
+
     </head>
 
     <body>
+        <img src="selected.jpg" id="selMap" style="display:none">
         <img src="normal.jpg" usemap="#acrmap" id="imgMap">
         <map id="acrmap" name="acrmap">
-            <area shape="rect" data-key="CoC1" title="" coords="1217,998,1285,1043" href="#" />
-            <area shape="rect" data-key="CoC1" title="" coords="1070,688,1133,726" href="#" />
-            <area shape="rect" data-key="CoC1" title="" coords="1014,1231,1075,1271" href="#" />
-            <area shape="rect" data-key="CoC1" title="" coords="744,1001,804,1038" href="#" />
-            <area shape="rect" data-key="CoC2" title="" coords="1071,627,1132,668" href="#" />
+            <area target="_blank" shape="rect" data-key="CoC1" title="" coords="1217,998,1285,1043" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" />
+            <area shape="rect" data-key="CoC1a" title="" coords="1070,688,1133,726" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" />
+            <area shape="rect" data-key="CoC1b" title="" coords="1014,1231,1075,1271" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" />
+            <area shape="rect" data-key="CoC1c" title="" coords="744,1001,804,1038" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" />
+            <area shape="rect" data-key="CoC2" title="" coords="1071,627,1132,668" href="https://drive.google.com/file/d/0BzT8m6ELWmHhOUpkX09rZHZaVnM/edit?usp=sharing" />
             <area shape="rect" data-key="CoC3" title="" coords="1015,1319,1075,1355" href="" />
             <area shape="rect" data-key="CoC4" title="" coords="1359,926,1422,968" href="" />
         </map> 
+
+        <!--
+        <div id="zoomInButton"></div>
+        <div id="zoomOutButton"></div>
+        -->
+
         <script>
-            var rawData = [
-                {
+
+            var resourceCount = 0;
+
+            var rawData = [ {
                     "key": "CoC1",
                     "date": "February 20th, 2013",
                     "from": "Deputy Collector, CoC",
                     "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
                     "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
                     "violation": "RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is <b>a clear violation of Section X(Y)</b>"
-                }
-
-            ];
+                }, {
+                    "key": "CoC2",
+                    "date": "February 20th, 2013",
+                    "from": "Deputy Collector, CoC",
+                    "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+                    "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+                    "violation": "RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is <b>a clear violation of Section X(Y)</b>"
+                }, {
+                    "key": "CoC3",
+                    "date": "February 20th, 2013",
+                    "from": "Deputy Collector, CoC",
+                    "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+                    "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+                    "violation": "RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is <b>a clear violation of Section X(Y)</b>"
+                }, {
+                    "key": "CoC4",
+                    "date": "February 20th, 2013",
+                    "from": "Deputy Collector, CoC",
+                    "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+                    "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+                    "violation": "RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is <b>a clear violation of Section X(Y)</b>"
+                }, {
+                    "key": "CoC5",
+                    "date": "February 20th, 2013",
+                    "from": "Deputy Collector, CoC",
+                    "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+                    "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+                    "violation": "RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is <b>a clear violation of Section X(Y)</b>"
+                }];
 
             for (var i = 0; i < rawData.length; i++) {
                 rawData[i]["toolTip"] = rawData[i].date + "<hr/>" +
-                "From: " + rawData[i].from + "<hr/>" + 
-                "To: " + rawData[i].to + "<hr/>" + 
-                rawData[i].description + "<hr/>" + 
-                "Violation: " + rawData[i].violation;
-
+                    "From: " + rawData[i].from + "<hr/>" + 
+                    "To: " + rawData[i].to + "<hr/>" + 
+                    rawData[i].description + "<hr/>" + 
+                    "Violation: " + rawData[i].violation
             }
 
-            $('#imgMap').mapster({
-                showToolTip: true,
-                altImage: 'selected.jpg',
-                toolTipContainer: '<div id="tooltip"></div>',
-                mapKey: 'data-key',
-                toolTipContainer: '<div style="width: 20%; min-width: 200px; border: 1px solid #ee0000; background: #FFFFFF; font-family:Arial; font-size: 0.8em; position:absolute; padding:4px; margin: 4px; -moz-box-shadow: 0px 0px 7px #cc5511; -webkit-box-shadow: 0px 0px 7px #cc5511; box-shadow: 0px 0px 7px #cc5511; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; border-radius: 6px 6px 6px 6px; opacity: 0.8;"></div>',
-                areas: [
-                    {
-                        key: "CoC1",
-                        toolTip: "February 20th <hr> From: Deputy Collector, CoC <hr> To: PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC; Electrical Department, CoC <hr> Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question. <hr> RTI transfer is to be done within 5 days of receival of RTI. But here 20 days are taken, which is a clear violation of Section X(Y)"
-                    },
-                    { 
-                        key: "CoC2",
-                        toolTip: "Dont mess with me TOO"
-                    }
-                ],
-                areas: rawData,
-                //stroke: true,
-                //strokeColor: 'ffffff',
-                //fillColor: 'ffffff',
-                //fillOpacity: 0.25
+            rawData.push({"key": "CoC1a", "toolTip": rawData[0].toolTip});
+            rawData.push({"key": "CoC1b", "toolTip": rawData[0].toolTip});
+            rawData.push({"key": "CoC1c", "toolTip": rawData[0].toolTip});
+
+            $("#selMap").load(function() {
+                //console.log("One image loaded");
+                resourceCount++;
+                if (resourceCount == 2) {
+                    initImageMapster();
+                }
             });
+
+            $("#imgMap").load(function() {
+                //console.log("One image loaded");
+                resourceCount++;
+                if (resourceCount == 2) {
+                    initImageMapster();
+                }
+            });
+
+            function initImageMapster() {
+                console.log("Mapster Init " + $(document).height());
+                console.log("Mapster Init " + $(window).height());
+
+                $('html, body').animate({scrollTop: ($(document).height() - $(window).height()) * 0.5}, 1000);
+                $('html, body').animate({scrollLeft: ($(document).width() - $(window).width()) * 0.5}, 1000);
+
+                $('#imgMap').mapster({
+                    showToolTip: true,
+                    altImage: 'selected.jpg',
+                    mapKey: 'data-key',
+                    toolTipContainer: '<div style="width: 20%; min-width: 200px; border: 1px solid #ee0000; background: #FFFFFF; font-family:Arial; font-size: 0.8em; position:absolute; padding:4px; margin: 4px; -moz-box-shadow: 0px 0px 7px #cc5511; -webkit-box-shadow: 0px 0px 7px #cc5511; box-shadow: 0px 0px 7px #cc5511; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; border-radius: 6px 6px 6px 6px; opacity: 0.8;"></div>',
+                    areas: rawData,
+                    toolTipClose: 'area-click',
+                    clickNavigate: true,
+                    configTimeout: 10000,
+                    scaleMap: true
+                    //mouseoutDelay: 2000
+                });
+            }
+
+            $("#zoomInButton").click(function() {
+                
+                console.log("zoom in");
+            });
+
+            $("#zoomOutButton").click(function() {
+                console.log("zoom Out");
+            });
+
+
         </script>
     </body>
 
