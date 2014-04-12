@@ -1,5 +1,4 @@
-<!--
-ACR-Timeline-Infograph 
+<!-- ACR-Timeline-Infograph 
 saiy2k (http://saiy2k.blogspot.in)
 
 This file is part of ACR-Timeline-Infograph project (https://github.com/GethuGames/ACR-Timeline-Infograph).
@@ -43,6 +42,32 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
                 text-align: center;
                 font-family: arial;
                 cursor: pointer;
+                display: inline;
+            }
+
+            #notificationArea {
+                float: left;
+                width: 92%;
+            }
+
+            #leftArrowButton {
+                float:left;
+                width:4%;
+                height: 3em;
+            }
+
+            #leftArrowButton:hover {
+                background: rgba(50, 0, 0, 0.9);
+            }
+
+            #rightArrowButton {
+                float:right;
+                width:4%;
+                height: 3em;
+            }
+
+            #rightArrowButton:hover {
+                background: rgba(50, 0, 0, 0.9);
             }
 
             #fullScreenButton {
@@ -113,8 +138,14 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
             <area shape="rect" data-key="MAWS2" coords="1088,567,1157,609" href="https://drive.google.com/file/d/0BzT8m6ELWmHhQzlqNU5RSjVPU1U/edit?usp=sharing" target="_blank" />
             <area shape="rect" data-key="MAWS3" coords="1062,362,1180,422" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcHk4RHhwR3BXWjg/edit?usp=sharing" target="_blank" />
             <area shape="rect" data-key="MAWS4" coords="1350,369,1419,412" href="https://drive.google.com/file/d/0BzT8m6ELWmHhdGRwVm5fWGNWajg/edit?usp=sharing" target="_blank" />
-            <area shape="rect" data-key="MAWS5" coords="1211,198,1330,259" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMTF3TnBINVp1WGs/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS5" coords="1421,454,1534,508" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMTF3TnBINVp1WGs/edit?usp=sharing" target="_blank" />
             <area shape="rect" data-key="MAWS1a" coords="998,734,1055,768" href="https://drive.google.com/file/d/0BzT8m6ELWmHhUlNEblBSYTdIcVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS6" coords="1292,285,1405,341" href="https://drive.google.com/file/d/0BzT8m6ELWmHhRDkzYV9GSkxULTg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS7" coords="1320,184,1375,219" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMzd3YVljVjFHQnc/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS8" coords="1256,183,1311,218" href="https://drive.google.com/file/d/0BzT8m6ELWmHhMl9nb1lCRjF6NVU/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS9" coords="1385,184,1438,218" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNFkzeE5IbmdqZzg/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS10" coords="1290,147,1342,181" href="https://drive.google.com/file/d/0BzT8m6ELWmHhNWI5NzcwbENTaUE/edit?usp=sharing" target="_blank" />
+            <area shape="rect" data-key="MAWS11" coords="1324,78,1436,143" href="https://drive.google.com/file/d/0B76vDSSLMZVubU1seHd5VGhONHc/edit?usp=sharing" target="_blank" />
 
             <!-- TNPCB -->
             <area shape="rect" data-key="TNPCB1" coords="711,574,768,610" href="https://drive.google.com/file/d/0BzT8m6ELWmHhcFpEVU5DOGV6MzA/edit?usp=sharing" target="_blank" />
@@ -242,7 +273,11 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
 
         <div id="fullScreenButton"></div>
 
-        <div id="notificationBar"> This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph">GITHUB</a> </div>
+        <div id="notificationBar"> 
+            <div id="leftArrowButton"> <br/> &lt;&lt; </div>
+            <div id="notificationArea"> This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph" target="_blank">GITHUB</a> </div>
+            <div id="rightArrowButton"> <br/> &gt;&gt; </div>
+        </div>
 
         <br/>
         <br/>
@@ -254,830 +289,896 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
 
         <script>
 
-            var resourceCount = 0;
+var timerID;
 
-            var currentViolation = {};
+var resourceCount = 0;
 
-            var rawData = [ { // 0 CoC
-                    "key": "CoC1",
-                    "date": "February 20th, 2013",
-                    "from": "Deputy Collector, CoC",
-                    "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
-                    "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI with the intimation to the Application. But here around 18 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3)</b>"
-                }, { // 1
-                    "key": "CoC2",
-                    "date": "March 04th, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer, TNPCB",
-                    "description": "Forwarded within TNPCB for RTI received through CoC",
-                    "violation": ""
-                }, { // 2
-                    "key": "CoC3",
-                    "date": "March 08th, 2013",
-                    "from": "Thiru. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
-                    "to": "PIO, Deputy Superintending Engineer, WRD, Palar Basin Circle",
-                    "description": "Forwarded within TNPCB for RTI received through CoC",
-                    "violation": ""
-                }, { // 3
-                    "key": "CoC4",
-                    "date": "Marth 12, 2013",
-                    "from": "PIO, Superintending Engineer, SWD, CoC",
-                    "to": "S Alexraj",
-                    "description": "Biometric survey in process. Once done, eviction of encroachments will be taken up",
-                    "violation": "There was no trace of how our RTI reached this PIO. Some other PIO messed up with the RTI transfer by not intimating us about the transfer"
-                }, { // 4
-                    "key": "CoC5",
-                    "date": "March 23rd, 2013",
-                    "from": "PIO, Superintending Engineer (C) V, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Sewage discharged into ACR after treatment as per Pollution Control Board norms.",
-                    "violation": "<b>Untreated sewage not let into Adyar and Cooum Rivers, which is ONE BIG LIE</b>"
-                }, { // 5
-                    "key": "CoC6",
-                    "date": "April 4, 2013",
-                    "from": "S Alexraj",
-                    "to": "City Health Officer, First Appellate Authority, CoC",
-                    "description": "on PIO, Public Health Department, Corporation of Chennai",
-                    "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
-                }, { // 6
-                    "key": "CoC7",
-                    "date": "April 4, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer (Building and Bridges), First Appellate Authoriy, CoC",
-                    "description": "on SE (Electrical), Corporation of Chennai",
-                    "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
-                }, { // 7
-                    "key": "CoC8",
-                    "date": "April 15, 2013",
-                    "from": "PIO, Addl City Health Officer, CoC",
-                    "to": "S Alexraj",
-                    "description": " * 6 Catamarans to spray mosquito larvicide oil after removing Hyacinth plants <br/> * Fogging operations done to reduce mosquito population <br/> * 1941 mosquito complaints received in 2012-2013 <br/> * Separate team at zonal level to attend mosquito complaints",
-                    "violation": ""
+var currentViolation = {};
 
-                }, { // 8 MAWS
-                    "key": "MAWS1",
-                    "date": "February 22, 2013",
-                    "from": "Mr. <b class='redHighlight'>S. Abraham,</b> MA, BABL, PIO, Under Secretary",
-                    "to": "PIO, CoC",
-                    "description": "The Under Secretary simply transferred the RTI to Corporation of Chennai, without giving information specific to MAWS.",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
-                }, { // 9
-                    "key": "MAWS2",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Deputy Secretary, FAA",
-                    "description": "on Mr. S. Abraham, MA, BABL, PIO Under Secretary, <b>for escaping from the responsibility of answering</b>, by transferring the RTI to Corporation of Chennai after 20 days of application of RTI",
-                    "violation": ""
-                }, { // 10
-                    "key": "MAWS3",
-                    "date": "April 30, 2013",
-                    "from": "Thiru <b class='redHighlight'> S S Ranganathan, </b> MA, Deputy Secretary, FAA",
-                    "to": "S Alexraj",
-                    "description": " * unclear statements <br/> * passing responsibility to CRRT, CMWSSB, TNSC and CoC <br/> * letting only treated water into rivers, which is far from REALITY <br/> * SUFFICIENT AMOUNT is allocated - <b>Crap answer</b> <br/>",
-                    "violation": "<span class=’redHighlight’>Even an elementary kid will tell how much he / she have spent on buying a candy or something. We seriously wonder how come this people were given the designation of Deputy Secretary.</span>"
-                }, { // 11
-                    "key": "MAWS4",
-                    "date": "June 26, 2013",
-                    "from": "S Alexraj",
-                    "to": "<b class='redHighlight'>Tamil Nadu Information Commission</b>",
-                    "description": "Appeal to Information Commission for unclear, kiddish answers by First Appellate Authority",
-                    "violation": ""
-                }, { // 12
-                    "key": "MAWS5",
-                    "date": "July 18, 2013",
-                    "from": "Thiru <b class='redHighlight'>S S Ranganathan, </b> MA, Deputy Secretary, FAA",
-                    "to": "CRRT and CMWSSB",
-                    "description": "Another <b class=’redHighlight’>funny and kiddish move by Thiru S S Ranganathan.</b>He now transfers the RTI to CRRT and CMWSSB, for what? Only god knows. There are no provisions in RTI Act to transfer a RTI after Second Appeal, but only our administrators will do such a hilarious thing in an attempt to escape.",
-                    "violation": ""
+var rawData = [ { // 0 CoC
+        "key": "CoC1",
+        "date": "February 20th, 2013",
+        "from": "Deputy Collector, CoC",
+        "to": "PWD; TNPCB; CMWSSB; PHD, CoC; Chief Engineer, CoC, Electrical Department, CoC",
+        "description": "Deputy Collector very cleverly delegated the responsibility to other departments and other PIOs in Corporation of Chennai, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI with the intimation to the Application. But here around 18 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3)</b>"
+    }, { // 1
+        "key": "CoC2",
+        "date": "March 04th, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Forwarded within TNPCB for RTI received through CoC",
+        "violation": ""
+    }, { // 2
+        "key": "CoC3",
+        "date": "March 08th, 2013",
+        "from": "Thiru. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Deputy Superintending Engineer, WRD, Palar Basin Circle",
+        "description": "Forwarded within TNPCB for RTI received through CoC",
+        "violation": ""
+    }, { // 3
+        "key": "CoC4",
+        "date": "Marth 12, 2013",
+        "from": "PIO, Superintending Engineer, SWD, CoC",
+        "to": "S Alexraj",
+        "description": "Biometric survey in process. Once done, eviction of encroachments will be taken up",
+        "violation": "There was no trace of how our RTI reached this PIO. Some other PIO messed up with the RTI transfer by not intimating us about the transfer"
+    }, { // 4
+        "key": "CoC5",
+        "date": "March 23rd, 2013",
+        "from": "PIO, Superintending Engineer (C) V, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Sewage discharged into ACR after treatment as per Pollution Control Board norms.",
+        "violation": "<b>Untreated sewage not let into Adyar and Cooum Rivers, which is ONE BIG LIE</b>"
+    }, { // 5
+        "key": "CoC6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "City Health Officer, First Appellate Authority, CoC",
+        "description": "on PIO, Public Health Department, Corporation of Chennai",
+        "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
+    }, { // 6
+        "key": "CoC7",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer (Building and Bridges), First Appellate Authoriy, CoC",
+        "description": "on SE (Electrical), Corporation of Chennai",
+        "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
+    }, { // 7
+        "key": "CoC8",
+        "date": "April 15, 2013",
+        "from": "PIO, Addl City Health Officer, CoC",
+        "to": "S Alexraj",
+        "description": " * 6 Catamarans to spray mosquito larvicide oil after removing Hyacinth plants <br/> * Fogging operations done to reduce mosquito population <br/> * 1941 mosquito complaints received in 2012-2013 <br/> * Separate team at zonal level to attend mosquito complaints",
+        "violation": ""
 
-                }, { // 13 TNPCB
-                    "key": "TNPCB1",
-                    "date": "February 06, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer, TNPCB",
-                    "description": "Forwarded the RTI to his subordinate within right time frame of 5 days as prescribed in Section 6(3). <b class=’positiveColor’>Dr. K. Karthikeyan is the one follows the RTI act more or less good </b>",
-                    "violation": ""
-                }, { // 14
-                    "key": "TNPCB2",
-                    "date": "March 04, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "S Alexraj",
-                    "description": " * PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * enforces Water (P&CP) Act, 1974 amended in 1988. <br/> * TNPCB ensures no industrial outfalls <br/> * Local bodies to take care of residential and commercial outfalls <br/> * <b class=’positiveColor’>3 months report (October, November, December)</b> <br/> * No complaints received on pollution in Adyar and Cooum rivers <br/>",
-                    "violation": ""
-                }, { // 15
-                    "key": "TNPCB3",
-                    "date": "March 15, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer, TNPCB",
-                    "description": "RTI received through E & F forwarded to District Environmental Engineer",
-                    "violation": ""
-                }, { // 16
-                    "key": "TNPCB4",
-                    "date": "April 08, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "S Alexraj",
-                    "description": " * Tolerance Limits for Effluents </br> * Standards for Discharge of Trade Effluent",
-                    "violation": ""
-                }, { // 17
-                    "key": "TNPCB5",
-                    "date": "April 23, 2013",
-                    "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
-                    "to": "Directorate of Environment, Panagal building",
-                    "description": "Appeal transfered to E & F for an Appeal dated 2013-02-12, but no Appeal was made on the date. Its clearly <b class=’redHighlight’>a false information being circulated.</b>",
-                    "violation": ""
-                }, { // 18
-                    "key": "TNPCB6",
-                    "date": "April 23, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "S Alexraj",
-                    "description": "* PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * can issue Direction to CoC and CMWSSB under Section 33A of  Water (P&CP) Act, 1974 amended in 1988.",
-                    "violation": "Couldn’t trace the path taken by this RTI."
-                }, { // 19
-                    "key": "TNPCB7",
-                    "date": "May 06, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, Under Secretary, E & F",
-                    "description": "Intimating E & F that Information is already given to Appellant",
-                    "violation": ""
-                }, { // 20
-                    "key": "TNPCB8",
-                    "date": "May 10, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer, TNPCB",
-                    "description": "RTI received through CMWSSB <b class=’redHighlight’>on an unknown date.</b> forwarded to District Environmental Engineer",
-                    "violation": ""
-                }, { // 21
-                    "key": "TNPCB9",
-                    "date": "May 20, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "S Alexraj",
-                    "description": "CMWSSB has to take action against those who illegally drain untreated sewage water to abate pollution to water bodies",
-                    "violation": ""
-                }, { // 22
-                    "key": "TNPCB10",
-                    "date": "May 21, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "S Alexraj",
-                    "description": "PWD is responsible for maintenance and monitoring of rivers. Reply (for RTI forwarded on 2013-05-10) <b class=’positiveColor’> given within prescribed time </b>",
-                    "violation": ""
-                }, { // 22
-                    "key": "TNPCB11",
-                    "date": "May 27, 2013",
-                    "from": "Tmt G Manjula, PIO, Deputy Director, Directorate of Environment, Panagal building",
-                    "to": "PIO, TNPCB",
-                    "description": "No information available with E & F for the Appeal forwarded on 2013-04-23",
-                    "violation": ""
-                }, { // 23
-                    "key": "TNPCB12",
-                    "date": "June 18, 2013",
-                    "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
-                    "to": "PWD, CMWSSB",
-                    "description": "Since Directorate of Environment (11) had no information, the same RTI is forwarded to PWD, CMWSSB",
-                    "violation": "<b class=’redHighlight’>Dr. S Balaji is playing Ping Pong game here. He first send the Appeal to E & F, then returned it; now he tries the same with PWD and CMWSSB. </b>"
-                }, { // 24
-                    "key": "TNPCB13",
-                    "date": "June 25, 2013",
-                    "from": "S Alexraj",
-                    "to": "FAA, TNPCB",
-                    "description": "on PIO, TNPCB for CPCB RTI enquiring the copy of Investigation Status Report, that was transferred to TNPCB",
-                    "violation": ""
-                }, { // 25
-                    "key": "TNPCB14",
-                    "date": "June 30, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "S Alexraj",
-                    "description": "<b class=’redHighlight’>Instead of providing the actual Investigation report, a f***** story is made up and given to CPCB.</b>",
-                    "violation": "And they took 20 extra days to make up this story, violating 7(1) of RTI Act."
-                }, { // 26
-                    "key": "TNPCB15",
-                    "date": "July 04, 2013",
-                    "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
-                    "to": "Appellate Authority, TNPCB",
-                    "description": "Information already given in a letter dated 2013-06-30",
-                    "violation": ""
-                }, { // 27
-                    "key": "TNPCB16",
-                    "date": "July 13, 2013",
-                    "from": "Dr. H. Malleshappa, IFS, Member Secretary, FAA, TNPCB",
-                    "to": "S Alexraj",
-                    "description": "Information already given in a letter dated 2013-06-30",
-                    "violation": ""
+    }, { // 8 MAWS
+        "key": "MAWS1",
+        "date": "February 22, 2013",
+        "from": "Mr. <b class='redHighlight'>S. Abraham,</b> MA, BABL, PIO, Under Secretary",
+        "to": "PIO, CoC",
+        "description": "The Under Secretary simply transferred the RTI to Corporation of Chennai, without giving information specific to MAWS.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
+    }, { // 9
+        "key": "MAWS2",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Deputy Secretary, FAA",
+        "description": "on Mr. S. Abraham, MA, BABL, PIO Under Secretary, <b>for escaping from the responsibility of answering</b>, by transferring the RTI to Corporation of Chennai after 20 days of application of RTI",
+        "violation": ""
+    }, { // 10
+        "key": "MAWS3",
+        "date": "April 30, 2013",
+        "from": "Thiru <b class='redHighlight'> S S Ranganathan, </b> MA, Deputy Secretary, FAA",
+        "to": "S Alexraj",
+        "description": " * unclear statements <br/> * passing responsibility to CRRT, CMWSSB, TNSC and CoC <br/> * letting only treated water into rivers, which is far from REALITY <br/> * SUFFICIENT AMOUNT is allocated - <b>Crap answer</b> <br/>",
+        "violation": "<span class=’redHighlight’>Even an elementary kid will tell how much he / she have spent on buying a candy or something. We seriously wonder how come this people were given the designation of Deputy Secretary.</span>"
+    }, { // 11
+        "key": "MAWS4",
+        "date": "June 26, 2013",
+        "from": "S Alexraj",
+        "to": "<b class='redHighlight'>Tamil Nadu Information Commission</b>",
+        "description": "Appeal to Information Commission for unclear, kiddish answers by First Appellate Authority",
+        "violation": ""
+    }, { // 12
+        "key": "MAWS5",
+        "date": "July 18, 2013",
+        "from": "Thiru <b class='redHighlight'>S S Ranganathan, </b> MA, Deputy Secretary, FAA",
+        "to": "CRRT and CMWSSB",
+        "description": "Another <b class=’redHighlight’>funny and kiddish move by Thiru S S Ranganathan.</b>He now transfers the RTI to CRRT and CMWSSB, for what? Only god knows. There are no provisions in RTI Act to transfer a RTI after Second Appeal, but only our administrators will do such a hilarious thing in an attempt to escape.",
+        "violation": ""
 
-                }, { // 28 CPCB
-                    "key": "CPCB1",
-                    "date": "March 1, 2013",
-                    "from": "CPCB",
-                    "to": "Member Secretary, TNPCB",
-                    "description": "Complaint forwarded and requested to investigate and submit status report",
-                    "violation": ""
-                }, { // 29 
-                    "key": "CPCB2",
-                    "date": "April 30, 2013",
-                    "from": "S Alexraj",
-                    "to": "PIO, Director, CPCB",
-                    "description": "Enquiring the copy of Investigation status report",
-                    "violation": ""
-                }, { // 30 
-                    "key": "CPCB3",
-                    "date": "May 9, 2013",
-                    "from": "CPCB",
-                    "to": "TNPCB",
-                    "description": "The RTI dated April 30, 2013 is forwarded to TNPCB from CPCB",
-                    "violation": ""
-                }, { // 31 
-                    "key": "CPCB4",
-                    "date": "May 9, 2013",
-                    "from": "CPCB",
-                    "to": "TNPCB",
-                    "description": "Enquiry on status of Investigation status report",
-                    "violation": "Its been 2 months since the Complaint was forwarded and TNPCB never responded to the order of CPCB to investigate on Adyar and Cooum river."
-                }, { // 32 
-                    "key": "CPCB5",
-                    "date": "May 24, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer, TNPCB",
-                    "description": "Transfer of RTI received from CPCB dated May 9, 2013",
-                    "violation": ""
-                }, { // 33 
-                    "key": "CPCB6",
-                    "date": "May 28, 2013",
-                    "from": "CPCB",
-                    "to": "TNPCB",
-                    "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
-                    "violation": ""
-                }, { // 34
-                    "key": "CPCB6",
-                    "date": "May 28, 2013",
-                    "from": "CPCB",
-                    "to": "TNPCB",
-                    "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
-                    "violation": ""
+    }, { // 13 TNPCB
+        "key": "TNPCB1",
+        "date": "February 06, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Forwarded the RTI to his subordinate within right time frame of 5 days as prescribed in Section 6(3). <b class=’positiveColor’>Dr. K. Karthikeyan is the one follows the RTI act more or less good </b>",
+        "violation": ""
+    }, { // 14
+        "key": "TNPCB2",
+        "date": "March 04, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": " * PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * enforces Water (P&CP) Act, 1974 amended in 1988. <br/> * TNPCB ensures no industrial outfalls <br/> * Local bodies to take care of residential and commercial outfalls <br/> * <b class=’positiveColor’>3 months report (October, November, December)</b> <br/> * No complaints received on pollution in Adyar and Cooum rivers <br/>",
+        "violation": ""
+    }, { // 15
+        "key": "TNPCB3",
+        "date": "March 15, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "RTI received through E & F forwarded to District Environmental Engineer",
+        "violation": ""
+    }, { // 16
+        "key": "TNPCB4",
+        "date": "April 08, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": " * Tolerance Limits for Effluents </br> * Standards for Discharge of Trade Effluent",
+        "violation": ""
+    }, { // 17
+        "key": "TNPCB5",
+        "date": "April 23, 2013",
+        "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
+        "to": "Directorate of Environment, Panagal building",
+        "description": "Appeal transfered to E & F for an Appeal dated 2013-02-12, but no Appeal was made on the date. Its clearly <b class=’redHighlight’>a false information being circulated.</b>",
+        "violation": ""
+    }, { // 18
+        "key": "TNPCB6",
+        "date": "April 23, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "* PWD responsible for maintenance and monitoring of Adyar and Cooum rivers. <br/> * can issue Direction to CoC and CMWSSB under Section 33A of  Water (P&CP) Act, 1974 amended in 1988.",
+        "violation": "Couldn’t trace the path taken by this RTI."
+    }, { // 19
+        "key": "TNPCB7",
+        "date": "May 06, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, Under Secretary, E & F",
+        "description": "Intimating E & F that Information is already given to Appellant",
+        "violation": ""
+    }, { // 20
+        "key": "TNPCB8",
+        "date": "May 10, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "RTI received through CMWSSB <b class=’redHighlight’>on an unknown date.</b> forwarded to District Environmental Engineer",
+        "violation": ""
+    }, { // 21
+        "key": "TNPCB9",
+        "date": "May 20, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "S Alexraj",
+        "description": "CMWSSB has to take action against those who illegally drain untreated sewage water to abate pollution to water bodies",
+        "violation": ""
+    }, { // 22
+        "key": "TNPCB10",
+        "date": "May 21, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "PWD is responsible for maintenance and monitoring of rivers. Reply (for RTI forwarded on 2013-05-10) <b class=’positiveColor’> given within prescribed time </b>",
+        "violation": ""
+    }, { // 22
+        "key": "TNPCB11",
+        "date": "May 27, 2013",
+        "from": "Tmt G Manjula, PIO, Deputy Director, Directorate of Environment, Panagal building",
+        "to": "PIO, TNPCB",
+        "description": "No information available with E & F for the Appeal forwarded on 2013-04-23",
+        "violation": ""
+    }, { // 23
+        "key": "TNPCB12",
+        "date": "June 18, 2013",
+        "from": "Dr. S Balaji, Member Secretary, FAA, TNPCB",
+        "to": "PWD, CMWSSB",
+        "description": "Since Directorate of Environment (11) had no information, the same RTI is forwarded to PWD, CMWSSB",
+        "violation": "<b class=’redHighlight’>Dr. S Balaji is playing Ping Pong game here. He first send the Appeal to E & F, then returned it; now he tries the same with PWD and CMWSSB. </b>"
+    }, { // 24
+        "key": "TNPCB13",
+        "date": "June 25, 2013",
+        "from": "S Alexraj",
+        "to": "FAA, TNPCB",
+        "description": "on PIO, TNPCB for CPCB RTI enquiring the copy of Investigation Status Report, that was transferred to TNPCB",
+        "violation": ""
+    }, { // 25
+        "key": "TNPCB14",
+        "date": "June 30, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "S Alexraj",
+        "description": "<b class=’redHighlight’>Instead of providing the actual Investigation report, a f***** story is made up and given to CPCB.</b>",
+        "violation": "And they took 20 extra days to make up this story, violating 7(1) of RTI Act."
+    }, { // 26
+        "key": "TNPCB15",
+        "date": "July 04, 2013",
+        "from": "Er.R.Sarasavani, M.Tech, M.B.A., PIO, District Environmental Engineer",
+        "to": "Appellate Authority, TNPCB",
+        "description": "Information already given in a letter dated 2013-06-30",
+        "violation": ""
+    }, { // 27
+        "key": "TNPCB16",
+        "date": "July 13, 2013",
+        "from": "Dr. H. Malleshappa, IFS, Member Secretary, FAA, TNPCB",
+        "to": "S Alexraj",
+        "description": "Information already given in a letter dated 2013-06-30",
+        "violation": ""
 
-                }, { // 35 CMWSSB
-                    "key": "CMWSSB1",
-                    "date": "February 6, 2013",
-                    "from": "Staff Manager, CMWSSB",
-                    "to": "SE (STP), SE (Coordination)",
-                    "description": "",
-                    "violation": ""
-                }, { // 36
-                    "key": "CMWSSB2",
-                    "date": "February 14, 2013",
-                    "from": "Area Engineer 12, PIO, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Details of Area 12 Pumping Stations",
-                    "violation": "The PIOs fail to intimate the Applicant on transfer of RTIs. We are not aware that the RTI reached Area Engineer 12, but it happened somehow."
-                }, { // 37
-                    "key": "CMWSSB3",
-                    "date": "February 27, 2013",
-                    "from": "SE(C) - V",
-                    "to": "S Alexraj",
-                    "description": "Details of Koyambedu and Nesapakkam Sewage Treatment Plant",
-                    "violation": ""
-                }, { // 38
-                    "key": "CMWSSB4",
-                    "date": "March 4, 2013",
-                    "from": "S Alexraj",
-                    "to": "The Secretary Cum General Manager",
-                    "description": " * on Staff Manager for escaping from providing information <br/> * on AE 12 and SE(C) V for Incomplete Information",
-                    "violation": ""
-                }, { // 39
-                    "key": "CMWSSB5",
-                    "date": "March 7, 2013",
-                    "from": "Executive Engineer (STP/P)",
-                    "to": "S Alexraj",
-                    "description": " * Details of Perungudi Sewage Treatment Plant<br/> * No complaints received on pollution in Adyar and Cooum rivers",
-                    "violation": ""
-                }, { // 40
-                    "key": "CMWSSB6",
-                    "date": "March 12, 2013",
-                    "from": "S Alexraj",
-                    "to": "SAO, FAA, CMWSSB",
-                    "description": "on AE 12, CMWSSB for Incomplete Information",
-                    "violation": ""
-                }, { // 41
-                    "key": "CMWSSB7",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer, CMWSSB",
-                    "description": "on SE (STP), CMWSSB for deemed denial",
-                    "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
-                }, { // 42
-                    "key": "CMWSSB8",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer, CMWSSB",
-                    "description": "on EE (Perungudi) for skipping questions",
-                    "violation": ""
-                }, { // 43
-                    "key": "CMWSSB9",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer, CMWSSB",
-                    "description": "on SE(C) V for skipping questions",
-                    "violation": ""
-                }, { // 44
-                    "key": "CMWSSB10",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer, CMWSSB",
-                    "description": "on SE (Coordination)",
-                    "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
-                }, { // 45
-                    "key": "CMWSSB11",
-                    "date": "March 22, 2013",
-                    "from": "SE(C) V, PIO, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Layout diagrams of Koyambedu and Nesapakkam Sewage Treatment Plants",
-                    "violation": ""
-                }, { // 46
-                    "key": "CMWSSB12",
-                    "date": "April 8, 2013",
-                    "from": "S Alexraj",
-                    "to": "Chief Engineer, CMWSSB",
-                    "description": "on SE(C) V for not providing Blueprint / Map / Layout of Sewage System",
-                    "violation": ""
-                }, { // 47
-                    "key": "CMWSSB13",
-                    "date": "April 8, 2013",
-                    "from": "Chief Engineer, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Details of Perungudi Sewage Treatment Plant. No complaints received on pollution in Adyar and Cooum rivers",
-                    "violation": ""
-                }, { // 48
-                    "key": "CMWSSB14",
-                    "date": "April 10, 2013",
-                    "from": "Chief Engineer, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": " * Map of drainage system is not available<br/> * Few questions forwarded to Deputy Chief Engg. PWD<br/> * Few questions forwarded to PIO, TNPCB",
-                    "violation": ""
-                }, { // 49
-                    "key": "CMWSSB15",
-                    "date": "April 10, 2013",
-                    "from": "Chief Engineer, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": " * Details of Kodungaiyur STP<br/> * List of Pumping Stations in North Chennai",
-                    "violation": ""
-                }, { // 50
-                    "key": "CMWSSB16",
-                    "date": "April 11, 2013",
-                    "from": "Er. K. Venkateshwaralu, A.M.I.E., Deputy Chief Engineer, PWD",
-                    "to": "Engineer in Chief, PWD",
-                    "description": "",
-                    "violation": ""
-                }, { // 51
-                    "key": "CMWSSB17",
-                    "date": "April 15, 2013",
-                    "from": "Thiru.V.Muthaìyan, M.A., B.L., PIO,Under Secretary, PWD",
-                    "to": "Deputy Chief Engg., PIO, WRD",
-                    "description": "",
-                    "violation": ""
-                }, { // 52
-                    "key": "CMWSSB18",
-                    "date": "April 15, 2013",
-                    "from": "Chief Engineer, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Information already given by Chief Engineer (O&M) on 10.04.2013",
-                    "violation": ""
-                }, { // 53
-                    "key": "CMWSSB19",
-                    "date": "April 15, 2013",
-                    "from": "Executive Engineer (STP/P), CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Perungudi STP Layout given clearly after the First Appeal is filed",
-                    "violation": ""
-                }, { // 54
-                    "key": "CMWSSB20",
-                    "date": "April 18, 2013",
-                    "from": "Chief Engineer (C) 3, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "Stated that information regarding Koyambedu and Nesapakkam Sewage Treatment Plants was already given",
-                    "violation": ""
-                }, { // 55
-                    "key": "CMWSSB21",
-                    "date": "April 25, 2013",
-                    "from": "Area Engineer 8, CMWSSB",
-                    "to": "S Alexraj",
-                    "description": "List of all Pumping Stations in Area 8.",
-                    "violation": "No trace on who forwarded the RTI to AE 8."
-                }, { // 56
-                    "key": "CMWSSB22",
-                    "date": "June 24, 2013",
-                    "from": "Staff Manager, CMWSSB",
-                    "to": "SE I and V",
-                    "description": "RTI received through TNPCB. Forwarded to sub-ordinates.",
-                    "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+    }, { // 28 CPCB
+        "key": "CPCB1",
+        "date": "March 1, 2013",
+        "from": "CPCB",
+        "to": "Member Secretary, TNPCB",
+        "description": "Complaint forwarded and requested to investigate and submit status report",
+        "violation": ""
+    }, { // 29 
+        "key": "CPCB2",
+        "date": "April 30, 2013",
+        "from": "S Alexraj",
+        "to": "PIO, Director, CPCB",
+        "description": "Enquiring the copy of Investigation status report",
+        "violation": ""
+    }, { // 30 
+        "key": "CPCB3",
+        "date": "May 9, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "The RTI dated April 30, 2013 is forwarded to TNPCB from CPCB",
+        "violation": ""
+    }, { // 31 
+        "key": "CPCB4",
+        "date": "May 9, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Enquiry on status of Investigation status report",
+        "violation": "Its been 2 months since the Complaint was forwarded and TNPCB never responded to the order of CPCB to investigate on Adyar and Cooum river."
+    }, { // 32 
+        "key": "CPCB5",
+        "date": "May 24, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer, TNPCB",
+        "description": "Transfer of RTI received from CPCB dated May 9, 2013",
+        "violation": ""
+    }, { // 33 
+        "key": "CPCB6",
+        "date": "May 28, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
+        "violation": ""
+    }, { // 34
+        "key": "CPCB6",
+        "date": "May 28, 2013",
+        "from": "CPCB",
+        "to": "TNPCB",
+        "description": "Its been 3 months since the Complaint was forwarded and TNPCB still not responded to the order of CPCB to investigate on Adyar and Cooum river. Shame on TNPCB",
+        "violation": ""
 
-                }, { // 57 HAFW
-                    "key": "HAFW1",
-                    "date": "March 14, 2013",
-                    "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
-                    "to": "E & F, PWD, PHPM",
-                    "description": "<b class=’redHighlight’>Thiru. K. Chithiraìkannu</b> very cleverly delegated the responsibility to other departments, without giving information for atleast one question.",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 40  days are taken, which is <b>a clear violation of Section 6(3) </b>"
-                }, { // 58
-                    "key": "HAFW2",
-                    "date": "March 18, 2013",
-                    "from": "S Alexraj",
-                    "to": "Special Secretary, FAA",
-                    "description": "Thiru. K. Chithiraìkannu dated his letter March 14, though we received it very late after March 20. Hence, we filed a First Appeal on March 18, 2013",
-                    "violation": "This is another trick that PIOs use: They send their letter in a very late date, but inside the letter a very early date is mentioned."
-                }, { // 59
-                    "key": "HAFW3",
-                    "date": "March 22, 2013",
-                    "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
-                    "to": "PIO, Deputy Chief Engineer, WRD",
-                    "description": "The RTI sent to PWD is again forwarded internally within PWD",
-                    "violation": ""
-                }, { // 60
-                    "key": "HAFW4",
-                    "date": "March 26, 2013",
-                    "from": "PIO, PHPM",
-                    "to": "Commissioner, CoC",
-                    "description": "The RTI sent to PHPM is forwarded to Corporation Commissioner for no good reason, except for escaping.",
-                    "violation": "Most PIOs points fingers at others rather than giving us the information"
-                }, { // 61
-                    "key": "HAFW5",
-                    "date": "April 9, 2013",
-                    "from": "P. Senthilkumar, FAA, Special Secretary",
-                    "to": "E&F, PWD, PHPM",
-                    "description": "<b class=’redHighlight’>P. Senthilkumar</b> very cleverly delegated the responsibility to other departments, exactly as done by his PIO.",
-                    "violation": "Appeal transfer is to be done within 5 days of receival of Appeal, with intimation to the Applicant. But here around 20  days are taken, which is <b>a clear violation of Section 6(3) </b>"
-                }, { // 62
-                    "key": "HAFW6",
-                    "date": "May 2, 2013",
-                    "from": "PIO, PHPM",
-                    "to": "Commissioner, CoC",
-                    "description": "The PHPM PIO is very clear in his/her stand that they won’t provide us any information and again forward the Appeal to Corporation Commissioner.",
-                    "violation": ""
-                }, { // 63
-                    "key": "HAFW7",
-                    "date": "June 19, 2013",
-                    "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
-                    "to": "Director of Medical Education",
-                    "description": "The RTI of Unknown origin is transferred to Medical Education",
-                    "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+    }, { // 35 CMWSSB
+        "key": "CMWSSB1",
+        "date": "February 6, 2013",
+        "from": "Staff Manager, CMWSSB",
+        "to": "SE (STP), SE (Coordination)",
+        "description": "",
+        "violation": ""
+    }, { // 36
+        "key": "CMWSSB2",
+        "date": "February 14, 2013",
+        "from": "Area Engineer 12, PIO, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Details of Area 12 Pumping Stations",
+        "violation": "The PIOs fail to intimate the Applicant on transfer of RTIs. We are not aware that the RTI reached Area Engineer 12, but it happened somehow."
+    }, { // 37
+        "key": "CMWSSB3",
+        "date": "February 27, 2013",
+        "from": "SE(C) - V",
+        "to": "S Alexraj",
+        "description": "Details of Koyambedu and Nesapakkam Sewage Treatment Plant",
+        "violation": ""
+    }, { // 38
+        "key": "CMWSSB4",
+        "date": "March 4, 2013",
+        "from": "S Alexraj",
+        "to": "The Secretary Cum General Manager",
+        "description": " * on Staff Manager for escaping from providing information <br/> * on AE 12 and SE(C) V for Incomplete Information",
+        "violation": ""
+    }, { // 39
+        "key": "CMWSSB5",
+        "date": "March 7, 2013",
+        "from": "Executive Engineer (STP/P)",
+        "to": "S Alexraj",
+        "description": " * Details of Perungudi Sewage Treatment Plant<br/> * No complaints received on pollution in Adyar and Cooum rivers",
+        "violation": ""
+    }, { // 40
+        "key": "CMWSSB6",
+        "date": "March 12, 2013",
+        "from": "S Alexraj",
+        "to": "SAO, FAA, CMWSSB",
+        "description": "on AE 12, CMWSSB for Incomplete Information",
+        "violation": ""
+    }, { // 41
+        "key": "CMWSSB7",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE (STP), CMWSSB for deemed denial",
+        "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
+    }, { // 42
+        "key": "CMWSSB8",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on EE (Perungudi) for skipping questions",
+        "violation": ""
+    }, { // 43
+        "key": "CMWSSB9",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE(C) V for skipping questions",
+        "violation": ""
+    }, { // 44
+        "key": "CMWSSB10",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE (Coordination)",
+        "violation": "<b class=’redHighlight’>Perfect violation of Section 6(3) and 7(1) of RTI Act</b>"
+    }, { // 45
+        "key": "CMWSSB11",
+        "date": "March 22, 2013",
+        "from": "SE(C) V, PIO, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Layout diagrams of Koyambedu and Nesapakkam Sewage Treatment Plants",
+        "violation": ""
+    }, { // 46
+        "key": "CMWSSB12",
+        "date": "April 8, 2013",
+        "from": "S Alexraj",
+        "to": "Chief Engineer, CMWSSB",
+        "description": "on SE(C) V for not providing Blueprint / Map / Layout of Sewage System",
+        "violation": ""
+    }, { // 47
+        "key": "CMWSSB13",
+        "date": "April 8, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Details of Perungudi Sewage Treatment Plant. No complaints received on pollution in Adyar and Cooum rivers",
+        "violation": ""
+    }, { // 48
+        "key": "CMWSSB14",
+        "date": "April 10, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": " * Map of drainage system is not available<br/> * Few questions forwarded to Deputy Chief Engg. PWD<br/> * Few questions forwarded to PIO, TNPCB",
+        "violation": ""
+    }, { // 49
+        "key": "CMWSSB15",
+        "date": "April 10, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": " * Details of Kodungaiyur STP<br/> * List of Pumping Stations in North Chennai",
+        "violation": ""
+    }, { // 50
+        "key": "CMWSSB16",
+        "date": "April 11, 2013",
+        "from": "Er. K. Venkateshwaralu, A.M.I.E., Deputy Chief Engineer, PWD",
+        "to": "Engineer in Chief, PWD",
+        "description": "",
+        "violation": ""
+    }, { // 51
+        "key": "CMWSSB17",
+        "date": "April 15, 2013",
+        "from": "Thiru.V.Muthaìyan, M.A., B.L., PIO,Under Secretary, PWD",
+        "to": "Deputy Chief Engg., PIO, WRD",
+        "description": "",
+        "violation": ""
+    }, { // 52
+        "key": "CMWSSB18",
+        "date": "April 15, 2013",
+        "from": "Chief Engineer, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Information already given by Chief Engineer (O&M) on 10.04.2013",
+        "violation": ""
+    }, { // 53
+        "key": "CMWSSB19",
+        "date": "April 15, 2013",
+        "from": "Executive Engineer (STP/P), CMWSSB",
+        "to": "S Alexraj",
+        "description": "Perungudi STP Layout given clearly after the First Appeal is filed",
+        "violation": ""
+    }, { // 54
+        "key": "CMWSSB20",
+        "date": "April 18, 2013",
+        "from": "Chief Engineer (C) 3, CMWSSB",
+        "to": "S Alexraj",
+        "description": "Stated that information regarding Koyambedu and Nesapakkam Sewage Treatment Plants was already given",
+        "violation": ""
+    }, { // 55
+        "key": "CMWSSB21",
+        "date": "April 25, 2013",
+        "from": "Area Engineer 8, CMWSSB",
+        "to": "S Alexraj",
+        "description": "List of all Pumping Stations in Area 8.",
+        "violation": "No trace on who forwarded the RTI to AE 8."
+    }, { // 56
+        "key": "CMWSSB22",
+        "date": "June 24, 2013",
+        "from": "Staff Manager, CMWSSB",
+        "to": "SE I and V",
+        "description": "RTI received through TNPCB. Forwarded to sub-ordinates.",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
 
-                }, { // 64 PWD
-                    "key": "PWD1",
-                    "date": "February 6, 2013",
-                    "from": "Tmt. S. Thenmozhi, MA, B.Ed., PIO, Under Secretary, H&UD",
-                    "to": "PIO, PWD",
-                    "description": "We initially ignored PWD and instead targeted Housing and Urban Department. But our RTI was rightly transferred to PWD by them.",
-                    "violation": ""
-                }, { // 65
-                    "key": "PWD2",
-                    "date": "February 12, 2013",
-                    "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
-                    "to": "PIO, Deputy Chief Engineer, WRD",
-                    "description": "RTI forwarded within PWD",
-                    "violation": ""
-                }, { // 66
-                    "key": "PWD3",
-                    "date": "February 20, 2013",
-                    "from": "Thiru. S. Selvin Soundarajan, BE, PIO, Deputy Chief Engineer, WRD",
-                    "to": "PIO, Deputy Superintending Engineer, Palar Basin Circle, PWD",
-                    "description": "RTI being forwarded within, once more",
-                    "violation": ""
-                }, { // 67
-                    "key": "PWD4",
-                    "date": "March 20, 2013",
-                    "from": "R. SenthilKumar, PIO, Exec Engineer, Araniyar Basin Circle, PWD",
-                    "to": "Asst Exec Engg of Adyar and Cooum rivers, PWD",
-                    "description": "Some Black sheep forwarded the RTI to Araniyar Basin Circle without intimating us. And this RTI was forwarded again to some other PIO in PWD",
-                    "violation": ""
-                }, { // 68
-                    "key": "PWD5",
-                    "date": "March 28, 2013",
-                    "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
-                    "to": "PIO, Exec Engg, Araniyar Basin Circle, PWD",
-                    "description": "RTI reached this PIO without intimation to Applicant. This PIO in turn forwards to Araniyar Basin Circle",
-                    "violation": ""
-                }, { // 69
-                    "key": "PWD6",
-                    "date": "April 4, 2013",
-                    "from": "S Alexraj",
-                    "to": "Joint Chief Engg, PWD",
-                    "description": "on Deputy Superintending Engineer for Deemed Denial",
-                    "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
-                }, { // 70
-                    "key": "PWD7",
-                    "date": "April 5, 2013",
-                    "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "Acknowledgement that RTI is forwarded to another related PIO in Kosasthalaiyar Basin Division and information will be given once it is received from them",
-                    "violation": ""
-                }, { // 71
-                    "key": "PWD8",
-                    "date": "April 10, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg. Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
-                    "violation": ""
-                }, { // 72
-                    "key": "PWD9",
-                    "date": "April 12, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "Acknowledgement that RTI is forwarded to another related PIO in Cooum Basin Division and information will be given once it is received from them",
-                    "violation": ""
-                }, { // 73
-                    "key": "PWD10",
-                    "date": "April 19, 2013",
-                    "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
-                    "to": "FAA, Chief Engg, WRD",
-                    "description": "Transfer of First Appeal dated 04-04.",
-                    "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation </b>"
-                }, { // 74
-                    "key": "PWD11",
-                    "date": "April 19, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
-                    "violation": ""
-                }, { // 75
-                    "key": "PWD12",
-                    "date": "April 25, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "Assistant Executive Engineer, PWD, Cooum Sub Division, Chepauk and Assistant Engineer, PWD, Cooum River Section 3 are responsible for maintenance of monitory of Cooum river",
-                    "violation": ""
-                }, { // 76
-                    "key": "PWD13",
-                    "date": "April 26, 2013",
-                    "from": "Krishnamoorthy Sukumar, BE, FAA, Addl Chief Engg, PWD",
-                    "to": "PIO, Deputy Superintending Engg, Palar Basin Circle, PWD",
-                    "description": "Transfer of First Appeal dated April 4, 2013.",
-                    "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation </b>"
-                }, { // 77
-                    "key": "PWD14",
-                    "date": "April 29, 2013",
-                    "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "Territorial Jurisdictions of Adyar and Cooum rivers are given",
-                    "violation": ""
-                }, { // 78
-                    "key": "PWD15",
-                    "date": "May 3, 2013",
-                    "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
-                    "to": "Exec Engg, Araniyar Basin Division, PWD",
-                    "description": "for RTI forwarded from E & F on March 28, 2013 and April 15, 2013",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
-                }, { // 79
-                    "key": "PWD16",
-                    "date": "May 6, 2013",
-                    "from": "P. Suprent BE, PIO, Exec Engg, WRD",
-                    "to": "PIO, Deputy Chief Engg, , PWD",
-                    "description": "The RTI of Unknown origin is transferred within PWD",
-                    "violation": ""
-                }, { // 80
-                    "key": "PWD17",
-                    "date": "May 15, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
-                    "description": "",
-                    "violation": "RTI Transfer being made after 10 days, <b class=’redHighlight’>’a violation of Section 6(3)</b>, which requires the transfer to be done within 5 days"
-                }, { // 81
-                    "key": "PWD18",
-                    "date": "May 30, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
-                    "to": "S Alexraj",
-                    "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
-                    "violation": ""
-                }, { // 82
-                    "key": "PWD19",
-                    "date": "June 4, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
-                    "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
-                    "description": "Transfer of RTI received on May 6, 2013",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
-                }, { // 83
-                    "key": "PWD20",
-                    "date": "June 6, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "for Appeal forwarded on April 26, 2013",
-                    "violation": ""
-                }, { // 84
-                    "key": "PWD21",
-                    "date": "June 11, 2013",
-                    "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
-                    "to": "S Alexraj",
-                    "description": "actions like lodging police complainant against the defaulters, filing cases against the industrial / commercial entities will be taken.",
-                    "violation": ""
-                }, { // 85
-                    "key": "PWD22",
-                    "date": "June 25, 2013",
-                    "from": "A Pragadeeswaran ME, PIO, Exec Engg, WRD, PWD",
-                    "to": "PIO, Deputy Chief Engg, PWD",
-                    "description": "The RTI of Unknown origin is transferred within PWD.",
-                    "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
+    }, { // 57 HAFW
+        "key": "HAFW1",
+        "date": "March 14, 2013",
+        "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
+        "to": "E & F, PWD, PHPM",
+        "description": "<b class=’redHighlight’>Thiru. K. Chithiraìkannu</b> very cleverly delegated the responsibility to other departments, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 40  days are taken, which is <b>a clear violation of Section 6(3) </b>"
+    }, { // 58
+        "key": "HAFW2",
+        "date": "March 18, 2013",
+        "from": "S Alexraj",
+        "to": "Special Secretary, FAA",
+        "description": "Thiru. K. Chithiraìkannu dated his letter March 14, though we received it very late after March 20. Hence, we filed a First Appeal on March 18, 2013",
+        "violation": "This is another trick that PIOs use: They send their letter in a very late date, but inside the letter a very early date is mentioned."
+    }, { // 59
+        "key": "HAFW3",
+        "date": "March 22, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "PIO, Deputy Chief Engineer, WRD",
+        "description": "The RTI sent to PWD is again forwarded internally within PWD",
+        "violation": ""
+    }, { // 60
+        "key": "HAFW4",
+        "date": "March 26, 2013",
+        "from": "PIO, PHPM",
+        "to": "Commissioner, CoC",
+        "description": "The RTI sent to PHPM is forwarded to Corporation Commissioner for no good reason, except for escaping.",
+        "violation": "Most PIOs points fingers at others rather than giving us the information"
+    }, { // 61
+        "key": "HAFW5",
+        "date": "April 9, 2013",
+        "from": "P. Senthilkumar, FAA, Special Secretary",
+        "to": "E&F, PWD, PHPM",
+        "description": "<b class=’redHighlight’>P. Senthilkumar</b> very cleverly delegated the responsibility to other departments, exactly as done by his PIO.",
+        "violation": "Appeal transfer is to be done within 5 days of receival of Appeal, with intimation to the Applicant. But here around 20  days are taken, which is <b>a clear violation of Section 6(3) </b>"
+    }, { // 62
+        "key": "HAFW6",
+        "date": "May 2, 2013",
+        "from": "PIO, PHPM",
+        "to": "Commissioner, CoC",
+        "description": "The PHPM PIO is very clear in his/her stand that they won’t provide us any information and again forward the Appeal to Corporation Commissioner.",
+        "violation": ""
+    }, { // 63
+        "key": "HAFW7",
+        "date": "June 19, 2013",
+        "from": "Thiru. K. Chithiraìkannu, B. Com., PIO, Under Secretary",
+        "to": "Director of Medical Education",
+        "description": "The RTI of Unknown origin is transferred to Medical Education",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
 
-                }, { // 86 E & F
-                    "key": "EAF1",
-                    "date": "February 15, 2013",
-                    "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
-                    "to": "TNPCB, Director of Environment",
-                    "description": "Thiru V Sugumaran, Under Secretary delegated the responsibility to other departments, without giving information for atleast one question.",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 87 
-                    "key": "EAF2",
-                    "date": "February 20, 2013",
-                    "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
-                    "to": "PIO, Department of Environment; PIO, TNPCB; S Alexraj",
-                    "description": " * National River Conservation Programme supported by National River Conservation Directorate (NRCD) lMoEF is implemented by Department of Environment through Environment Management Agency of Tamil Nadu (EMAT), the Tamil Nadu Water Supply and Drainage Board (TWAD) and Chennai Metropolitan Water Supply and Sewerage Board (CMWSSB) <br/> * 7 petitions has been received in written and forwarded to TNPCB, regarding water pollution in 2012-2013 <br/> * many questions forwarded to TNPCB and DoE",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 88 
-                    "key": "EAF3",
-                    "date": "February 22, 2013",
-                    "from": "Dr. K. Karthikeyan, PIO, TNPCB",
-                    "to": "PIO, District Environmental Engineer",
-                    "description": "RTI received through E & F, being transferred within TNPCB",
-                    "violation": ""
-                }, { // 89 
-                    "key": "EAF4",
-                    "date": "March 25, 2013",
-                    "from": "Thiru A. Sugavanam, MA., BL., PIO, Under Secretary",
-                    "to": "PIO, Director of Environment",
-                    "description": "Thiru V Sugumaran, Under Secretary again transfers the RTI as he already did on February 15 for no reason.",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 45 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 90 
-                    "key": "EAF5",
-                    "date": "March 28, 2013",
-                    "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
-                    "to": "PWD; WRD; TWAD",
-                    "description": " * E & F didn’t implement any schemes to cleanup Adyar and Cooum rivers.<br/> * Transfer of RTI received on February 20, 2013",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 91 
-                    "key": "EAF6",
-                    "date": "April 4, 2013",
-                    "from": "S Alexraj",
-                    "to": "Additional Director, FAA",
-                    "description": "on Director of Environment for Deemed Denial of RTI transferred in a letter dated February, 20, 2013",
-                    "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
-                }, { // 92 
-                    "key": "EAF7",
-                    "date": "April 15, 2013",
-                    "from": "P. Suprent BE, PIO, Exec Engg, WRD",
-                    "to": "PIO, Deputy Chief Engg, PWD",
-                    "description": "RTI transfer within WRD, PWD for RTI received from E&F in a letter dated March 28, 2013",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 18 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 93 
-                    "key": "EAF8",
-                    "date": "April 26, 2013",
-                    "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
-                    "to": "CoC; PWD",
-                    "description": "Transfer of RTI received on March 25, 2013",
-                    "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b>a clear violation of Section 6(3), </b>"
-                }, { // 94 
-                    "key": "EAF9",
-                    "date": "April 26, 2013",
-                    "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
-                    "to": "S Alexraj",
-                    "description": "Information already given in a letter dated March 28, 2013",
-                    "violation": ""
-                }];
+    }, { // 64 PWD
+        "key": "PWD1",
+        "date": "February 6, 2013",
+        "from": "Tmt. S. Thenmozhi, MA, B.Ed., PIO, Under Secretary, H&UD",
+        "to": "PIO, PWD",
+        "description": "We initially ignored PWD and instead targeted Housing and Urban Department. But our RTI was rightly transferred to PWD by them.",
+        "violation": ""
+    }, { // 65
+        "key": "PWD2",
+        "date": "February 12, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "PIO, Deputy Chief Engineer, WRD",
+        "description": "RTI forwarded within PWD",
+        "violation": ""
+    }, { // 66
+        "key": "PWD3",
+        "date": "February 20, 2013",
+        "from": "Thiru. S. Selvin Soundarajan, BE, PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Deputy Superintending Engineer, Palar Basin Circle, PWD",
+        "description": "RTI being forwarded within, once more",
+        "violation": ""
+    }, { // 67
+        "key": "PWD4",
+        "date": "March 20, 2013",
+        "from": "R. SenthilKumar, PIO, Exec Engineer, Araniyar Basin Circle, PWD",
+        "to": "Asst Exec Engg of Adyar and Cooum rivers, PWD",
+        "description": "Some Black sheep forwarded the RTI to Araniyar Basin Circle without intimating us. And this RTI was forwarded again to some other PIO in PWD",
+        "violation": ""
+    }, { // 68
+        "key": "PWD5",
+        "date": "March 28, 2013",
+        "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "PIO, Exec Engg, Araniyar Basin Circle, PWD",
+        "description": "RTI reached this PIO without intimation to Applicant. This PIO in turn forwards to Araniyar Basin Circle",
+        "violation": ""
+    }, { // 69
+        "key": "PWD6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Joint Chief Engg, PWD",
+        "description": "on Deputy Superintending Engineer for Deemed Denial",
+        "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
+    }, { // 70
+        "key": "PWD7",
+        "date": "April 5, 2013",
+        "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Acknowledgement that RTI is forwarded to another related PIO in Kosasthalaiyar Basin Division and information will be given once it is received from them",
+        "violation": ""
+    }, { // 71
+        "key": "PWD8",
+        "date": "April 10, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg. Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 72
+        "key": "PWD9",
+        "date": "April 12, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Acknowledgement that RTI is forwarded to another related PIO in Cooum Basin Division and information will be given once it is received from them",
+        "violation": ""
+    }, { // 73
+        "key": "PWD10",
+        "date": "April 19, 2013",
+        "from": "Thiru. V. Muthaiyan MA BL, PIO, Under Secretary, PWD",
+        "to": "FAA, Chief Engg, WRD",
+        "description": "Transfer of First Appeal dated 04-04.",
+        "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation </b>"
+    }, { // 74
+        "key": "PWD11",
+        "date": "April 19, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 75
+        "key": "PWD12",
+        "date": "April 25, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Assistant Executive Engineer, PWD, Cooum Sub Division, Chepauk and Assistant Engineer, PWD, Cooum River Section 3 are responsible for maintenance of monitory of Cooum river",
+        "violation": ""
+    }, { // 76
+        "key": "PWD13",
+        "date": "April 26, 2013",
+        "from": "Krishnamoorthy Sukumar, BE, FAA, Addl Chief Engg, PWD",
+        "to": "PIO, Deputy Superintending Engg, Palar Basin Circle, PWD",
+        "description": "Transfer of First Appeal dated April 4, 2013.",
+        "violation": "Appeal transfer is to be done within 5 days, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation </b>"
+    }, { // 77
+        "key": "PWD14",
+        "date": "April 29, 2013",
+        "from": "M. Palanikumar ME, Exec Engg, Kosasthalaiyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "Territorial Jurisdictions of Adyar and Cooum rivers are given",
+        "violation": ""
+    }, { // 78
+        "key": "PWD15",
+        "date": "May 3, 2013",
+        "from": "Mr. N. Mageshwaran B.E., PIO, Deputy Chief Engineer, WRD",
+        "to": "Exec Engg, Araniyar Basin Division, PWD",
+        "description": "for RTI forwarded from E & F on March 28, 2013 and April 15, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
+    }, { // 79
+        "key": "PWD16",
+        "date": "May 6, 2013",
+        "from": "P. Suprent BE, PIO, Exec Engg, WRD",
+        "to": "PIO, Deputy Chief Engg, , PWD",
+        "description": "The RTI of Unknown origin is transferred within PWD",
+        "violation": ""
+    }, { // 80
+        "key": "PWD17",
+        "date": "May 15, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
+        "description": "",
+        "violation": "RTI Transfer being made after 10 days, <b class=’redHighlight’>’a violation of Section 6(3)</b>, which requires the transfer to be done within 5 days"
+    }, { // 81
+        "key": "PWD18",
+        "date": "May 30, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
+        "to": "S Alexraj",
+        "description": "6 lakhs spent on removal of blockages in waterways, jungle clearance, removal of encroachments, etc.,",
+        "violation": ""
+    }, { // 82
+        "key": "PWD19",
+        "date": "June 4, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin, PWD",
+        "to": "Addl. Exec Engg, Cooum Basin Circle, PWD",
+        "description": "Transfer of RTI received on May 6, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b class=’redHighlight’>a clear violation of Section 6(3), </b>"
+    }, { // 83
+        "key": "PWD20",
+        "date": "June 6, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "for Appeal forwarded on April 26, 2013",
+        "violation": ""
+    }, { // 84
+        "key": "PWD21",
+        "date": "June 11, 2013",
+        "from": "Er. R. SenthilKumar, ME, MIE, PIO, Exec Engg., Araniyar Basin Division, PWD",
+        "to": "S Alexraj",
+        "description": "actions like lodging police complainant against the defaulters, filing cases against the industrial / commercial entities will be taken.",
+        "violation": ""
+    }, { // 85
+        "key": "PWD22",
+        "date": "June 25, 2013",
+        "from": "A Pragadeeswaran ME, PIO, Exec Engg, WRD, PWD",
+        "to": "PIO, Deputy Chief Engg, PWD",
+        "description": "The RTI of Unknown origin is transferred within PWD.",
+        "violation": "The RTI dated February 1, 2013 is still being transferred even after 5 months. Such is the state of our Department authorities."
 
-            var violationArray = [];
+    }, { // 86 E & F
+        "key": "EAF1",
+        "date": "February 15, 2013",
+        "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
+        "to": "TNPCB, Director of Environment",
+        "description": "Thiru V Sugumaran, Under Secretary delegated the responsibility to other departments, without giving information for atleast one question.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 15 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 87 
+        "key": "EAF2",
+        "date": "February 20, 2013",
+        "from": "Thiru V Sugumaran, MA., LLB., PIO, Under Secretary",
+        "to": "PIO, Department of Environment; PIO, TNPCB; S Alexraj",
+        "description": " * National River Conservation Programme supported by National River Conservation Directorate (NRCD) lMoEF is implemented by Department of Environment through Environment Management Agency of Tamil Nadu (EMAT), the Tamil Nadu Water Supply and Drainage Board (TWAD) and Chennai Metropolitan Water Supply and Sewerage Board (CMWSSB) <br/> * 7 petitions has been received in written and forwarded to TNPCB, regarding water pollution in 2012-2013 <br/> * many questions forwarded to TNPCB and DoE",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 20 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 88 
+        "key": "EAF3",
+        "date": "February 22, 2013",
+        "from": "Dr. K. Karthikeyan, PIO, TNPCB",
+        "to": "PIO, District Environmental Engineer",
+        "description": "RTI received through E & F, being transferred within TNPCB",
+        "violation": ""
+    }, { // 89 
+        "key": "EAF4",
+        "date": "March 25, 2013",
+        "from": "Thiru A. Sugavanam, MA., BL., PIO, Under Secretary",
+        "to": "PIO, Director of Environment",
+        "description": "Thiru V Sugumaran, Under Secretary again transfers the RTI as he already did on February 15 for no reason.",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 45 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 90 
+        "key": "EAF5",
+        "date": "March 28, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "PWD; WRD; TWAD",
+        "description": " * E & F didn’t implement any schemes to cleanup Adyar and Cooum rivers.<br/> * Transfer of RTI received on February 20, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 35 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 91 
+        "key": "EAF6",
+        "date": "April 4, 2013",
+        "from": "S Alexraj",
+        "to": "Additional Director, FAA",
+        "description": "on Director of Environment for Deemed Denial of RTI transferred in a letter dated February, 20, 2013",
+        "violation": "No response after 30 days, which is a <b>violation of section 7(1) of RTI Act</b>"
+    }, { // 92 
+        "key": "EAF7",
+        "date": "April 15, 2013",
+        "from": "P. Suprent BE, PIO, Exec Engg, WRD",
+        "to": "PIO, Deputy Chief Engg, PWD",
+        "description": "RTI transfer within WRD, PWD for RTI received from E&F in a letter dated March 28, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 18 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 93 
+        "key": "EAF8",
+        "date": "April 26, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "CoC; PWD",
+        "description": "Transfer of RTI received on March 25, 2013",
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 30 days are taken, which is <b>a clear violation of Section 6(3), </b>"
+    }, { // 94 
+        "key": "EAF9",
+        "date": "April 26, 2013",
+        "from": "Tmt. G. Manjula, Deputy Director, PIO, Dept of Environment",
+        "to": "S Alexraj",
+        "description": "Information already given in a letter dated March 28, 2013",
+        "violation": ""
 
-            for (var i = 0; i < rawData.length; i++) {
-                rawData[i]["toolTip"] = "<b>" + rawData[i].date + "</b><hr/>" +
-                    "<b>From: </b>" + rawData[i].from + "<hr/>" + 
-                    "<b>To: </b>" + rawData[i].to;
-                    if (rawData[i].description.length != 0) {
-                        rawData[i]["toolTip"] += "<hr/><b>Description: </b>" + rawData[i].description; 
-                    }
-                    if (rawData[i].violation.length != 0) {
-                        rawData[i]["toolTip"] += "<hr/><b>Violation: </b>" + rawData[i].violation; 
-                        violationArray.push({"id": i, "key": rawData[i]["key"], "message": rawData[i].from + " : " + rawData[i].violation});
-                    }
+    }, { // 95 MAWS
+        "key": "MAWS6",
+        "date": "February 24, 2014",
+        "from": "Tamil Nadu Information Commission",
+        "to": "S Alexraj and PIOs from MAWS, CMWSSB, CRRT, CoC and PWD",
+        "description": "All the PIOs, especially MAWS PIO was flamed like nothing by the Information Commissioner and another hearing with the PIOs were planned and all PIOs are instructed to provide all required information within 15 days.",
+        "violation": ""
+    }, { // 96 MAWS
+        "key": "MAWS7",
+        "date": "March 3, 2014",
+        "from": "CMWSSB",
+        "to": "S Alexraj",
+        "description": "105 sewage outfalls in Cooum river and 49 sewage outfalls in Adyar river were identified. Work being carried over to fix those outfalls",
+        "violation": ""
+    }, { // 97 MAWS
+        "key": "MAWS8",
+        "date": "March 13, 2014",
+        "from": "PWD",
+        "to": "WRD",
+        "description": "PWD forwarding the RTI to WRD, for the Order received from TNIC. So its obvious that transferring of RTIs is done not only to the plea of a Common Man, but also to the order of the Information Commissioner.",
+        "violation": ""
+    }, { // 98 MAWS
+        "key": "MAWS9",
+        "date": "March 14, 2014",
+        "from": "CRRT",
+        "to": "S Alexraj",
+        "description": "126.51 Lakhs spent in the year 2012 - 2013 to renunciate a small part of 58 Acres in Adyar river",
+        "violation": ""
+    }, { // 99 MAWS
+        "key": "MAWS10",
+        "date": "March 19, 2014",
+        "from": "Public Health Department, CoC",
+        "to": "S Alexraj",
+        "description": "Irrelevant Information",
+        "violation": ""
+    }, { // 100 MAWS
+        "key": "MAWS11",
+        "date": "March 07, 2014",
+        "from": "MAWS",
+        "to": "S Alexraj",
+        "description": "<b class=’positiveColor’>Finally we got all required information from MAWS, including the Budget Spent and many more details.</b>",
+        "violation": ""
+    }];
+
+var violationArray = [];
+
+    for (var i = 0; i < rawData.length; i++) {
+        rawData[i]["toolTip"] = "<b>" + rawData[i].date + "</b><hr/>" +
+            "<b>From: </b>" + rawData[i].from + "<hr/>" + 
+            "<b>To: </b>" + rawData[i].to;
+            if (rawData[i].description.length != 0) {
+                rawData[i]["toolTip"] += "<hr/><b>Description: </b>" + rawData[i].description; 
             }
-
-            rawData.push({"key": "CoC1a", "toolTip": rawData[0].toolTip});
-            rawData.push({"key": "CoC1b", "toolTip": rawData[0].toolTip});
-            rawData.push({"key": "CoC1c", "toolTip": rawData[0].toolTip});
-            rawData.push({"key": "MAWS1a", "toolTip": rawData[8].toolTip});
-            rawData.push({"key": "TNPCB5a", "toolTip": rawData[17].toolTip});
-            rawData.push({"key": "TNPCB7a", "toolTip": rawData[19].toolTip});
-            rawData.push({"key": "TNPCB12a", "toolTip": rawData[24].toolTip});
-            rawData.push({"key": "TNPCB12b", "toolTip": rawData[24].toolTip});
-            rawData.push({"key": "CPCB1a", "toolTip": rawData[29].toolTip});
-            rawData.push({"key": "CPCB3a", "toolTip": rawData[31].toolTip});
-            rawData.push({"key": "CPCB4a", "toolTip": rawData[32].toolTip});
-            rawData.push({"key": "CPCB6a", "toolTip": rawData[34].toolTip});
-            rawData.push({"key": "CMWSSB1a", "toolTip": rawData[36].toolTip});
-            rawData.push({"key": "CMWSSB1b", "toolTip": rawData[36].toolTip});
-            rawData.push({"key": "CMWSSB14a", "toolTip": rawData[49].toolTip});
-            rawData.push({"key": "HAFW1a", "toolTip": rawData[58].toolTip});
-            rawData.push({"key": "HAFW1b", "toolTip": rawData[58].toolTip});
-            rawData.push({"key": "HAFW1c", "toolTip": rawData[58].toolTip});
-            rawData.push({"key": "HAFW4a", "toolTip": rawData[61].toolTip});
-            rawData.push({"key": "HAFW5a", "toolTip": rawData[62].toolTip});
-            rawData.push({"key": "HAFW5b", "toolTip": rawData[62].toolTip});
-            rawData.push({"key": "HAFW5c", "toolTip": rawData[62].toolTip});
-            rawData.push({"key": "HAFW6a", "toolTip": rawData[63].toolTip});
-            rawData.push({"key": "EAF1a", "toolTip": rawData[87].toolTip});
-            rawData.push({"key": "EAF2a", "toolTip": rawData[88].toolTip});
-            rawData.push({"key": "EAF5a", "toolTip": rawData[91].toolTip});
-            rawData.push({"key": "EAF8a", "toolTip": rawData[94].toolTip});
-
-            $("#selMap").load(function() {
-                //console.log("One image loaded");
-                resourceCount++;
-                if (resourceCount == 2) {
-                    initImageMapster();
-                }
-            });
-
-            $("#imgMap").load(function() {
-                //console.log("One image loaded");
-                resourceCount++;
-                if (resourceCount == 2) {
-                    initImageMapster();
-                }
-            });
-
-            function initImageMapster() {
-                console.log("Mapster Init " + $(document).height());
-                console.log("Mapster Init " + $(window).height());
-
-                $('html, body').animate({scrollTop: ($(document).height() - $(window).height()) * 0.5}, 1000);
-                $('html, body').animate({scrollLeft: ($(document).width() - $(window).width()) * 0.5}, 1000);
-
-                $('#imgMap').mapster({
-                    showToolTip: true,
-                    altImage: 'selected.jpg',
-                    mapKey: 'data-key',
-                    toolTipContainer: '<div style="width: 20%; min-width: 200px; border: 1px solid #ee0000; background: #FFFFFF; font-family:Arial; font-size: 0.8em; position:absolute; padding:4px; margin: 4px; -moz-box-shadow: 0px 0px 7px #cc5511; -webkit-box-shadow: 0px 0px 7px #cc5511; box-shadow: 0px 0px 7px #cc5511; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; border-radius: 6px 6px 6px 6px; opacity: 0.9;"></div>',
-                    areas: rawData,
-                    //toolTipClose: 'area-click',
-                    clickNavigate: true,
-                    configTimeout: 10000,
-                    scaleMap: true,
-                    //mouseoutDelay: 1000,
-                    stroke: true,
-                    render_highlight: {
-                        strokeWidth: 2
-                    },
-                    onShowToolTip: function(e) {
-                        var rect = $("area[data-key='" + e.key + "']").attr("coords").split(',');
-                        e.toolTip.css({ left: rect[0] + 'px', top: rect[3] + 'px' });
-                    }
-                });
-                window.setInterval(cycleMessage, 10000);
+            if (rawData[i].violation.length != 0 && rawData[i] != 'S Alexraj') {
+                rawData[i]["toolTip"] += "<hr/><b>Violation: </b>" + rawData[i].violation; 
+                violationArray.push({"id": i, "key": rawData[i]["key"], "message": rawData[i].from + " : " + rawData[i].violation});
             }
+    }
 
-            function onToolTip(e) {
+    rawData.push({"key": "CoC1a", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "CoC1b", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "CoC1c", "toolTip": rawData[0].toolTip});
+    rawData.push({"key": "MAWS1a", "toolTip": rawData[8].toolTip});
+    rawData.push({"key": "TNPCB5a", "toolTip": rawData[17].toolTip});
+    rawData.push({"key": "TNPCB7a", "toolTip": rawData[19].toolTip});
+    rawData.push({"key": "TNPCB12a", "toolTip": rawData[24].toolTip});
+    rawData.push({"key": "TNPCB12b", "toolTip": rawData[24].toolTip});
+    rawData.push({"key": "CPCB1a", "toolTip": rawData[29].toolTip});
+    rawData.push({"key": "CPCB3a", "toolTip": rawData[31].toolTip});
+    rawData.push({"key": "CPCB4a", "toolTip": rawData[32].toolTip});
+    rawData.push({"key": "CPCB6a", "toolTip": rawData[34].toolTip});
+    rawData.push({"key": "CMWSSB1a", "toolTip": rawData[36].toolTip});
+    rawData.push({"key": "CMWSSB1b", "toolTip": rawData[36].toolTip});
+    rawData.push({"key": "CMWSSB14a", "toolTip": rawData[49].toolTip});
+    rawData.push({"key": "HAFW1a", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW1b", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW1c", "toolTip": rawData[58].toolTip});
+    rawData.push({"key": "HAFW4a", "toolTip": rawData[61].toolTip});
+    rawData.push({"key": "HAFW5a", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW5b", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW5c", "toolTip": rawData[62].toolTip});
+    rawData.push({"key": "HAFW6a", "toolTip": rawData[63].toolTip});
+    rawData.push({"key": "EAF1a", "toolTip": rawData[87].toolTip});
+    rawData.push({"key": "EAF2a", "toolTip": rawData[88].toolTip});
+    rawData.push({"key": "EAF5a", "toolTip": rawData[91].toolTip});
+    rawData.push({"key": "EAF8a", "toolTip": rawData[94].toolTip});
 
-            }   
 
-            function cycleMessage() {
-                var rnd = Math.floor(Math.random() * violationArray.length);
-                currentViolation = violationArray[rnd];
-                $("#notificationBar").html(currentViolation.message);
-            }
 
-            $("#zoomInButton").click(function() {
-                
-                console.log("zoom in");
-            });
 
-            $("#zoomOutButton").click(function() {
-                console.log("zoom Out");
-            });
+$("#selMap").load(function() {
+    console.log("One image loaded");
+    resourceCount++;
+    if (resourceCount == 2) {
+        initImageMapster();
+    }
+});
 
-            $("#notificationBar").click(function() {
-                var key = currentViolation["key"];
-                if (key) {
-                    console.log("notification bar " + key);
-                    $('#imgMap').mapster('highlight',false);
-                    $('#imgMap').mapster('tooltip',key);
-                    $('#imgMap').mapster('highlight', key);
-                    var rect = $("area[data-key='" + key + "']").attr("coords").split(',');
-                    $('html, body').animate({
-                        scrollTop: rect[1],
-                        scrollLeft: rect[0]
-                    }, 500);
-                }
-            });
+$("#imgMap").load(function() {
+    console.log("One image loaded");
+    resourceCount++;
+    if (resourceCount == 2) {
+        initImageMapster();
+    }
+});
 
-            $("#fullScreenButton").click(function() {
-                //var elem = document.getElementById("imgMap");
-                var elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                  elem.requestFullscreen();
-                } else if (elem.msRequestFullscreen) {
-                  elem.msRequestFullscreen();
-                } else if (elem.mozRequestFullScreen) {
-                  elem.mozRequestFullScreen();
-                } else if (elem.webkitRequestFullscreen) {
-                  elem.webkitRequestFullscreen();
-                }
-            });
+function initImageMapster() {
+    console.log("Mapster Init " + $(document).height());
+    console.log("Mapster Init " + $(window).height());
 
+    $('html, body').animate({scrollTop: ($(document).height() - $(window).height()) * 0.5}, 1000);
+    $('html, body').animate({scrollLeft: ($(document).width() - $(window).width()) * 0.5}, 1000);
+
+    $('#imgMap').mapster({
+        showToolTip: true,
+        altImage: 'selected.jpg',
+        mapKey: 'data-key',
+        toolTipContainer: '<div style="width: 25%; min-width: 200px; border: 1px solid #ee0000; background: #FFFFFF; font-family:Arial; font-size: 0.8em; position:absolute; padding:4px; margin: 4px; -moz-box-shadow: 0px 0px 7px #cc5511; -webkit-box-shadow: 0px 0px 7px #cc5511; box-shadow: 0px 0px 7px #cc5511; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; border-radius: 6px 6px 6px 6px; opacity: 0.9;"></div>',
+        areas: rawData,
+        //toolTipClose: 'area-click',
+        clickNavigate: true,
+        configTimeout: 10000,
+        scaleMap: true,
+        //mouseoutDelay: 1000,
+        stroke: true,
+        render_highlight: {
+            strokeWidth: 2
+        },
+        onShowToolTip: function(e) {
+            var rect = $("area[data-key='" + e.key + "']").attr("coords").split(',');
+            e.toolTip.css({ left: rect[0] + 'px', top: rect[3] + 'px' });
+        }
+    });
+    timerID = window.setInterval(cycleMessage, 5000);
+    console.log(rawData);
+
+}
+
+function onToolTip(e) {
+
+}   
+
+function cycleMessage() {
+    var rnd = Math.floor(Math.random() * violationArray.length);
+    currentViolation = violationArray[rnd];
+    $("#notificationArea").html(currentViolation.message);
+}
+
+$("#zoomInButton").click(function() {
+    
+    console.log("zoom in");
+});
+
+$("#zoomOutButton").click(function() {
+    console.log("zoom Out");
+});
+
+$("#notificationArea").mouseover(function() {
+    var key = currentViolation["key"];
+    if (key) {
+        console.log("notification bar " + key);
+        $('#imgMap').mapster('highlight',false);
+        $('#imgMap').mapster('tooltip',key);
+        $('#imgMap').mapster('highlight', key);
+        var rect = $("area[data-key='" + key + "']").attr("coords").split(',');
+        $('html, body').animate({
+            scrollTop: rect[1],
+            scrollLeft: rect[0]
+        }, 500);
+    }
+});
+
+$("#notificationArea").mouseover(function() {
+    window.clearInterval(timerID);
+});
+
+$("#notificationArea").mouseout(function() {
+    timerID = window.setInterval(cycleMessage, 5000);
+});
+
+$("#leftArrowButton").click(function() {
+    cycleMessage();
+});
+
+$("#rightArrowButton").click(function() {
+    cycleMessage();
+});
+
+$("#fullScreenButton").click(function() {
+    //var elem = document.getElementById("imgMap");
+    var elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+});
 
         </script>
+
     </body>
 
 </html>
