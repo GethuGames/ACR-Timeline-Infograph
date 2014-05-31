@@ -21,6 +21,7 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
        
     <head>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <!--<script src="jquery.js"></script>-->
         <script src="jquery.imagemapster.min.js"></script>
 
         <style>
@@ -28,6 +29,28 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
             a {
                 color: #fff;
             }
+
+            #legendBar {
+                width: 20%;
+                height: 20px;
+                position: fixed;
+                right: 2%;
+                top: 2%;
+                background: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 4px;
+                text-align: center;
+                font-family: arial;
+                font-size: 12px;
+                display: inline;
+                overflow: hidden;
+            }
+
+            #legendTitle {
+                font-size: 16px;
+                cursor: pointer;
+            }
+
 
             #notificationBar {
                 width: 96%;
@@ -68,16 +91,6 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
 
             #rightArrowButton:hover {
                 background: rgba(50, 0, 0, 0.9);
-            }
-
-            #fullScreenButton {
-                width: 48px;
-                height: 48px;
-                position: fixed;
-                left: 10px;
-                top:10px;
-                background-image: url(fullScreenIcon.png);
-                border: 2px solid #aaaaff;
             }
 
             #zoomInButton {
@@ -271,12 +284,33 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
         <div id="zoomOutButton"></div>
         -->
 
-        <div id="fullScreenButton"></div>
-
         <div id="notificationBar"> 
             <div id="leftArrowButton"> <br/> &lt;&lt; </div>
             <div id="notificationArea"> This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph" target="_blank">GITHUB</a> </div>
             <div id="rightArrowButton"> <br/> &gt;&gt; </div>
+        </div>
+
+        <div id="legendBar">
+            <div id="legendTitle"> SHOW TIPS </div>
+            <div id="legendContent" style="text-align:left">
+                <br/>
+                <input type="CHECKBOX" id="fullScreenButton" value="off">
+                <label for="fullScreenButton">Full Screen</label>
+                <br/>
+                <p>
+                    <b style="font-size:14px; color: #f88">How to Read this Graph?</b> <br/> <br/>
+                    * The number <b>MM-DD</b> in the boxes represents the date of the letter as Month-Date<br/>
+                    * Each Pie represents a Department<br/>
+                    * Each dotted Octagon represents a month, the inner one starting from February<br/>
+                    * Mouse over the boxes to see more detail on the letter<br/>
+                    * Click on the boxes to open the letter itself<br/><br/>
+                    <b style="color:#88f">Blue Box</b> - a letter from GFoI to concerned department<br/>
+                    <b style="color:#8f8">Green Box</b> - a reply from concerned government department<br/>
+                    <b style="color:#ddd">Gray Box</b> - officials forwarding the letter between various departments
+                    <hr>
+                    <span style="color: #aaa">This Software is released under <a href="http://grayfaceofindia.in/modules/LICENSE.txt">GNU GPL v3 License</a>. Source of this project shall be found @ <a href="https://github.com/GethuGames/ACR-Timeline-Infograph" target="_blank">GITHUB</a></span>
+                </p>
+            </div>
         </div>
 
         <br/>
@@ -1164,16 +1198,38 @@ $("#rightArrowButton").click(function() {
 });
 
 $("#fullScreenButton").click(function() {
-    //var elem = document.getElementById("imgMap");
-    var elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
+    if($("#fullScreenButton").attr('checked') === "checked") {
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+});
+
+$("#legendTitle").click(function() {
+    console.log( $("#legendBar").height() );
+    if ( $("#legendBar").height() == 20 ) {
+        $("#legendBar").animate({height: 420}, 250);
+        $("#legendTitle").text("HIDE TIPS");
+    } else {
+        $("#legendBar").animate({height: 20}, 250);
+        $("#legendTitle").text("SHOW TIPS");
     }
 });
 
