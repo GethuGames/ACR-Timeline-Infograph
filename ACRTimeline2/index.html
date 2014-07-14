@@ -22,7 +22,7 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
     <head>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <!--<script src="jquery.js"></script>-->
-        <script src="jquery.imagemapster.min.js"></script>
+        <script src="../ACRTimeline1/jquery.imagemapster.min.js"></script>
 
         <style>
 
@@ -71,6 +71,8 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
             #notificationArea {
                 float: left;
                 width: 92%;
+                height: 40px;
+                overflow:none;
             }
 
             #leftArrowButton {
@@ -112,7 +114,7 @@ along with ACR-Timeline-Infograph. If not, see <http://www.gnu.org/licenses/>.
             }
 
             .redHighlight {
-                color: #aa0000;
+                color: #ee5555;
             }
 
             .positiveColor {
@@ -287,7 +289,7 @@ var rawData = [ { // 0 CoC
         "from": "PIO",
         "to": "Strom Water Drain, Zone1 to 15, Public Department ",
         "description": "PIO transfers the RTI to the sub-ordniates in CoC",
-        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 28 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 28 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 1
         "key": "CoC2",
         "date": "August 26th, 2013",
@@ -308,14 +310,14 @@ var rawData = [ { // 0 CoC
         "from": "City Engineer",
         "to": "SE, SWM and SE, SWD",
         "description": "",
-        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 48 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 48 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 4
         "key": "CoC5",
         "date": "September 13th, 2013",
         "from": "Saiyasodharan R",
         "to": "Asst.Commissioner",
         "description": "on Deputy Collector, Corporation of Chennai",
-        "violation": "No response after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": "No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 5
         "key": "CoC6",
         "date": "September 13th, 2013",
@@ -371,7 +373,7 @@ var rawData = [ { // 0 CoC
         "from": "Public Department",
         "to": "SWD, Zone 1 to 15, Public Deparment",
         "description": "",
-        "violation": "FA transfer is to be done within 5 days of receival of FA, with intimation to the Applicant. But here around 10 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": "FA transfer is to be done within 5 days of receival of FA, with intimation to the Applicant. But here around 10 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 13
         "key": "CoC14",
         "date": "October 4th, 2013",
@@ -477,7 +479,7 @@ var rawData = [ { // 0 CoC
         "from": "SWM",
         "to": "WRD, PWD",
         "description": " ",
-        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 153 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": "RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 153 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 28
         "key": "CoC29",
         "date": "January 27th, 2014",
@@ -548,7 +550,7 @@ var rawData = [ { // 0 CoC
         "from": "Saiyasodharan R",
         "to": "First Appellate",
         "description": "on Deputy Secretary, MAWS",
-        "violation": "No information after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": "No information after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 38
         "key": "MAWS3",
         "date": "October 1st, 2013",
@@ -584,7 +586,7 @@ var rawData = [ { // 0 CoC
         "from": "Jayakumar T.C. Ethiraju, PIO",
         "to": " District Environmental Engineer ",
         "description": " Jayakumar T.C. Ethiraju transfers the RTI to another PIO after 8 days",
-        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 8 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 8 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 43
         "key": "TNPCB2",
         "date": "August 12th, 2013",
@@ -619,7 +621,7 @@ var rawData = [ { // 0 CoC
         "from": " Saiyasodharan R",
         "to": " FAA",
         "description": " Appeal over PIO for not providing required Info after getting the fee of Rs. 22",
-        "violation": " PIO cheated us 22 Rs. as RTI fee, but didnt provide us any information. No response after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": " PIO cheated us 22 Rs. as RTI fee, but didnt provide us any information. No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 48
         "key": "TNPCB7",
         "date": "February 17th, 2014",
@@ -641,7 +643,7 @@ var rawData = [ { // 0 CoC
         "from": " Saiyasodharan R",
         "to": " Secretary cum General Mangager",
         "description": " on Staff Manager and 4 SuperIntending engineers for neglecting the RTI and not providing proper information",
-        "violation": " No response after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": " No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 51
         "key": "CMWSSB3",
         "date": "September 23rd, 2013",
@@ -719,14 +721,14 @@ var rawData = [ { // 0 CoC
         "from": " R. Senthil Kumar",
         "to": " Dy EE",
         "description": " RTI getting forwarded for 3rd time within the same department",
-        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 12 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 12 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
     }, { // 62
         "key": "PWD4",
         "date": "September 13th, 2013",
         "from": " Saiyasodharan R",
         "to": " FAA",
         "description": " on Deputy Secretary, PWD",
-        "violation": " No response after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": " No response after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 63
         "key": "PWD5",
         "date": "September 17th, 2013",
@@ -754,7 +756,7 @@ var rawData = [ { // 0 CoC
         "from": " SWM",
         "to": " WRD, PWD",
         "description": "",
-        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 153 days are taken, which is <b class='redHighlight>a clear violation of Section 6(3), </b>"
+        "violation": " RTI transfer is to be done within 5 days of receival of RTI, with intimation to the Applicant. But here around 153 days are taken, which is <b class='redHighlight'>a clear violation of Section 6(3), </b>"
 
     }, { // 67 E & F
         "key": "EF1",
@@ -769,7 +771,7 @@ var rawData = [ { // 0 CoC
         "from": " Saiyasodharan R",
         "to": " FAA",
         "description": " on A. Sugavanam, PIO, E&F",
-        "violation": " No Information given after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b> If the original complaint by Alexraj was forwarded to other departments, then Mr. A. Sugavanam is supposed to provide us with certified copy of those transfer letters. But its not given"
+        "violation": " No Information given after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b> If the original complaint by Alexraj was forwarded to other departments, then Mr. A. Sugavanam is supposed to provide us with certified copy of those transfer letters. But its not given"
     }, { // 69 
         "key": "EF3",
         "date": "September 23rd, 2013",
@@ -797,7 +799,7 @@ var rawData = [ { // 0 CoC
         "from": "Saiyasodharan R",
         "to": "FAA",
         "description": "on PIO, MDWS",
-        "violation": "No Information given after 30 days, which is a <b class='redHighlight>violation of section 7(1) of RTI Act</b>"
+        "violation": "No Information given after 30 days, which is a <b class='redHighlight'>violation of section 7(1) of RTI Act</b>"
     }, { // 73 MDWS
         "key": "MDWS2",
         "date": "September 26th, 2013",
@@ -809,14 +811,14 @@ var rawData = [ { // 0 CoC
         "key": "CMWSSB",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "Staff Manager",
+        "to": "Staff Manager, Chennai Metro Water and Sewage Supply Board",
         "description": "Progress made on Complaint received by MD, CMWSSB from S. Alexraj dated 2013-02-05",
         "violation": ""
     }, { // 75 RTI TNPCB
         "key": "TNPCB",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "Chairman",
+        "to": "Chairman, Tamil Nadu Pollution Control Board",
         "description": "Progress made on Complaint received by Chariman, TNPCB from S. Alexraj dated 2013-02-05",
         "violation": ""
     
@@ -824,35 +826,35 @@ var rawData = [ { // 0 CoC
         "key": "MAWS",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "PIO",
+        "to": "PIO, Municipal Administration and Water Supply",
         "description": "Progress made on Complaint received by Secretary, MAWS from S. Alexraj dated 2013-02-05",
         "violation": ""
     }, { // 77 RTI CoC
         "key": "Coc",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "PIO",
+        "to": "PIO, Corporation of Chennai",
         "description": "Progress made on Complaint received by Commissioner, CoC from S. Alexraj dated 2013-02-05",
         "violation": ""
     }, { // 78 RTI E&F
         "key": "EF",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "PIO",
+        "to": "PIO, Environment and Forest",
         "description": "Progress made on Complaint received by Secretary, E&F from S. Alexraj dated 2013-02-05",
         "violation": ""
     }, { // 79 RTI PWD
         "key": "PWD",
         "date": "July 22nd, 2013",
         "from": "Saiyasodharan R",
-        "to": "PIO/ Deputy Secretary",
+        "to": "PIO/ Deputy Secretary, Public Works Department",
         "description": " Progress made on Complaint received by Secretary, PWD from S. Alexraj dated 2013-03-18 ",
         "violation": ""
     }, { // 80 RTI MDWS
         "key": "MDWS",
         "date": "July 22nd, 2013",
         "from": " Saiyasodharan R ",
-        "to": " CPIO ",
+        "to": " CPIO, Ministry of Drinking and Water Supply ",
         "description": " Progress made on Complaint received by Joint Secretary (Sanitation), MDWS from S. Alexraj dated 2013-02-05 ",
         "violation": ""
     }];
@@ -1007,8 +1009,6 @@ $("#legendTitle").click(function() {
     }
 });
 
-        </script>
-<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1017,7 +1017,7 @@ $("#legendTitle").click(function() {
   ga('create', 'UA-38433521-1', 'auto');
   ga('send', 'pageview');
 
-</script>
+        </script>
 
     </body>
 
